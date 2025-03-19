@@ -187,7 +187,7 @@ function transformArticles(blogs) {
 async function deleteArticle(id) {
     try {
         console.log("Deleting article with id ", id);
-        const response = await fetch(`${urlBackend}/article/byId/${id}`, { method: 'DELETE' });
+        const response = await fetch(`${urlBackend}/article/deleteArticle/${id}`, { method: 'DELETE' });
 
         if (!response.ok) throw new Error('Fehler beim Löschen des Artikels');
 
