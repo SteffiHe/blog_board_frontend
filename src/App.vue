@@ -115,7 +115,7 @@ async function loadCategories() {
 
 async function loadColumns() {
   try {
-      const response = await fetch(`${urlBackend}/article/getAllArticles`);
+      const response = await fetch(`${urlBackend}/article/getAllArticlesWithAuthornameDTO`);
       if (!response.ok) throw new Error('Fehler beim Laden der Artikel');
       const article_temp = await response.json();
 
@@ -217,10 +217,11 @@ async function moveArticle(articleId, newColumnId) {
     }
 }
 
-async function createArticle(column, title, content, author, tagsName, rate, recommendation) {
+async function createArticle(column, title, content, authorName, tagsName, rate, recommendation) {
 
     const tags = transformTags(tagsName);
     const category = categories.value.find(c => c.id === column).name;
+    const author = authors.value.find(a => a.username === authorName).id;
 
     console.log("Creating article ", JSON.stringify({ category, title, content, author, tags, rate , recommendation}));
 
@@ -245,10 +246,11 @@ function transformTags(tagArray) {
 
 
 
-async function editArticle(column, id, title, content, author, tagsName, rate, recommendation) {
+async function editArticle(column, id, title, content, authorName, tagsName, rate, recommendation) {
 
     const tags = transformTags(tagsName);
     const category = columns.value.find(c => c.id === column).name;
+    const author = authors.value.find(a => a.username === authorName).id;
 
     console.log("Edit article ", JSON.stringify({ category, title, content, author, tags, rate, }));
 

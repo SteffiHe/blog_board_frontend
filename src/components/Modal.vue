@@ -230,7 +230,7 @@ onMounted(createModal)
                                     aria-label="Default select example" 
                                     v-model="articleAuthor"
                                     required>
-                                    <option v-for="author in authors" :value="author.id">{{author.username}}</option>
+                                    <option v-for="author in authors" :value="author.username">{{author.username}}</option>
                                 </select>
                             </div>
                         </div>
