@@ -26,7 +26,7 @@
     <h4 class="text-light pt-4">{{ column.name }}</h4>
     <div class="column-body">
         <ArticleCard 
-            v-for="article in column.articles" 
+            v-for="article in column.articles"
             :key="article.id" 
             :article="article"
             :otherColumns="columns.filter(c => c.id !== columnId)" 

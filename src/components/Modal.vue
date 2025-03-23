@@ -10,8 +10,8 @@ import Recommendation from '@/components/Recommendation.vue';
 ///////////////////////////////////////////////
 
 const MODAL_ID = 'modalRoot' // for the modal's root element
-const MODAL_SELECT_COLUMN_ID = 'modalSelectColumn' // for the selector in the modal's header
-const MODAL_SELECT_AUTHOR_ID = 'modalSelectColumn' // for the selector in the modal's header
+const MODAL_SELECT_CATEGORY_ID = 'modalSelectCategory' // for the selector in the modal's header
+const MODAL_SELECT_AUTHOR_ID = 'modalSelectAuthor' // for the selector in the modal's header
 const MODAL_BUTTON_X_ID = 'modalButtonX'
 
 const MODAL_INPUT_TITLE_ID = 'modalInputTitle' // for the input where users enter the article's title
@@ -205,10 +205,10 @@ onMounted(createModal)
                     <form @submit.prevent="submitModal">
                         
                         <div class="d-flex align-items-center gap-3 mb-3">
-                            <div>Catagory </div>
+                            <div>Category </div>
                             <div class="d-inline-block" >
                                 <select 
-                                    :id="MODAL_SELECT_COLUMN_ID" 
+                                    :id="MODAL_SELECT_CATEGORY_ID" 
                                     class="form-select" 
                                     :class="{ 'is-invalid': !articleColumn }"
                                     aria-label="Default select example" 
@@ -244,9 +244,9 @@ onMounted(createModal)
                                 class="form-control" 
                                 :class="{ 'is-invalid': !articleTitle }"
                                 :aria-describedby="MODAL_HELPER_TITLE_ID" 
-                                maxlength="20"
+                                maxlength="40"
                                 required>
-                            <div :id="MODAL_HELPER_TITLE_ID" class="form-text">{{ articleTitle.length }}/20 characters</div>                           
+                            <div :id="MODAL_HELPER_TITLE_ID" class="form-text">{{ articleTitle.length }}/40 characters</div>                           
                         </div>
 
                         <div class="mb-3">
@@ -273,7 +273,7 @@ onMounted(createModal)
                                             <div class="dropdown-item-text">
                                                 <div class="form-check">
                                                     <input 
-                                                        :id="MODAL_CHECKBOX_BASE_TAG_ID + tag.value.name" 
+                                                        :id="MODAL_CHECKBOX_BASE_TAG_ID + tag.value.name"
                                                         type="checkbox" 
                                                         class="form-check-input" 
                                                         v-model="articleTags[index].value.selected"
