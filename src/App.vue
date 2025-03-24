@@ -18,6 +18,8 @@ const modalRef = ref(null)
 
 const title = 'Database Blog'
 const urlBackend = 'http://localhost:8080'
+//const urlBackend = '/api'
+
 
 /**
  * Calls the showModal() function in Modal.vue, assuming the component is registered and referenced.

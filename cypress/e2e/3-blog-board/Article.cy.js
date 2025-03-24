@@ -1,4 +1,6 @@
-context ('Create Article', () => {
+context ('Create, edit and delete Article', () => {
+
+    const frontend_url = 'http://localhost:9999/'
 
     const article = {
         category: 'Other',
@@ -10,7 +12,7 @@ context ('Create Article', () => {
     }
 
     it ('Create a new article', () => {
-        cy.visit('http://localhost:9999/')
+        cy.visit(frontend_url)
         cy.get('#buttonToggleModal').click()
         cy.get('#modalSelectCategory').select(article.category)
         cy.get('#modalSelectAuthor').select(article.author)
@@ -70,8 +72,8 @@ context ('Create Article', () => {
 
     })
 
-    it ('edit article', () => {
-        cy.visit('http://localhost:9999/')
+    it ('Edit article', () => {
+        cy.visit(frontend_url)
         cy.get(`#column-${article.category}`).find(`[data-testid="article-${article.title}"]`).find(".dropdown").find("#dropdownMenuButton").click();
         cy.get(`#column-${article.category}`).find(`[data-testid="article-${article.title}"]`).find(".dropdown").find("#dropdownItemEdit").click();
 
@@ -82,7 +84,7 @@ context ('Create Article', () => {
 
         cy.get('#modalButtonSubmit').click()
 
-        // confirm the new created article exists
+        // confirm the article has been moved to the new category and title has been updated
         cy.get(`#column-${article.category_new}`).should('exist').within(() => {
             cy.get(`[data-testid="article-${article.title_new}"]`).should('exist').within(() => {
                 cy.get('[data-testid="article-title"]').should('contain', article.title);
@@ -104,8 +106,8 @@ context ('Create Article', () => {
     })
 
 
-    it ('delete article', () => {
-        cy.visit('http://localhost:9999/')
+    it ('Delete article', () => {
+        cy.visit(frontend_url)
         cy.get(`#column-${article.category}`).find(`[data-testid="article-${article.title}"]`).find(".dropdown").find("#dropdownMenuButton").click()
         cy.get(`#column-${article.category}`).find(`[data-testid="article-${article.title}"]`).find(".dropdown").find("#dropdownItemDelete").click()
         cy.get(`#column-${article.category}`).find(`[data-testid="article-${article.title}"]`).should('not.exist')
