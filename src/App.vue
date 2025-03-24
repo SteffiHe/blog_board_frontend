@@ -17,8 +17,8 @@ const recommendations = ref([])
 const modalRef = ref(null)
 
 const title = 'Database Blog'
-const urlBackend = 'http://localhost:8080'
-//const urlBackend = '/api'
+//const urlBackend = 'http://localhost:8080'
+const urlBackend = '/api'
 
 
 /**
