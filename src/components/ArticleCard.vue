@@ -4,6 +4,16 @@
 	import Rate from './Rate.vue'
 	import Recommendation from './Recommendation.vue'
 
+	///////////////////////////////////////////////
+	// IDs to be used for the respective DOM elements in the template
+	///////////////////////////////////////////////
+
+	const MODAL_DROPDOWN_TRIGGER_ID = 'dropdownMenuButton'
+	const MODAL_DROPDOWN_ITEM_EDIT = 'dropdownItemEdit'
+	const MODAL_DROPDOWN_ITEM_DELETE = 'dropdownItemDelete'
+	const MODAL_DROPDOWN_ITEM_MOVE = 'dropdownItemMove'
+
+
 	const props = defineProps({
 		otherColumns: {
 			type: Array,
@@ -70,16 +80,16 @@
 </script>
 
 <template>
-	<div class="card bg-light mt-3">
+	<div class="card bg-light mt-3" :data-testid="`article-${article.title}`">
 		<div class="card-header d-flex justify-content-between align-items-center">
-			<h5 class="collapsed mb-0">{{ article.title }}</h5>
+			<h5 class="collapsed mb-0" data-testid="article-title">{{ article.title }}</h5>
 			<div class="dropdown">
-				<button class="btn btn-link p-0 m-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				<button class="btn btn-link p-0 m-0" type="button" :id="MODAL_DROPDOWN_TRIGGER_ID" data-bs-toggle="dropdown" aria-expanded="false">
 					<img src="../assets/hamburger.svg" alt="Edit Article" height="24" width="24">
 				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<ul class="dropdown-menu" :aria-labelledby="MODAL_DROPDOWN_TRIGGER_ID">
 					<li class="d-flex justify-content-between align-items-center dropdown-submenu">
-						<a class="dropdown-item" href="#" @mouseover="checkSubmenuPosition">Move</a>
+						<a class="dropdown-item" href="#" @mouseover="checkSubmenuPosition" :id="MODAL_DROPDOWN_ITEM_MOVE">Move</a>
 						<span class="me-2">&raquo</span>
 						<ul class="dropdown-menu dropdown-submenu-right" href="#" ref="submenuRef">
 							<li v-for="column in otherColumns">
@@ -87,13 +97,13 @@
 							</li>
 						</ul>
 					</li>
-					<li><a class="dropdown-item" href="#" @click="triggerEdit">Edit</a></li>
-					<li><a class="dropdown-item" href="#" @click="deleteArticle">Delete</a></li>
+					<li><a class="dropdown-item" href="#" @click="triggerEdit" :id="MODAL_DROPDOWN_ITEM_EDIT">Edit</a></li>
+					<li><a class="dropdown-item" href="#" @click="deleteArticle":id="MODAL_DROPDOWN_ITEM_DELETE" >Delete</a></li>
 				</ul>
 			</div>
 		</div>
 		<div :class="['card-body', collapsed]" @click="toggleCollapsed()">
-			<p class="card-text"> {{ article.content }} </p>
+			<p class="card-text" data-testid="article-content"> {{ article.content }} </p>
 			<p class="card-text">
 				<small class="text-muted">
 					Created on {{ article.createTime }} 

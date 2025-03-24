@@ -18,6 +18,8 @@ const modalRef = ref(null)
 
 const title = 'Database Blog'
 const urlBackend = 'http://localhost:8080'
+//const urlBackend = '/api'
+
 
 /**
  * Calls the showModal() function in Modal.vue, assuming the component is registered and referenced.
@@ -115,7 +117,7 @@ async function loadCategories() {
 
 async function loadColumns() {
   try {
-      const response = await fetch(`${urlBackend}/article/getAllArticles`);
+      const response = await fetch(`${urlBackend}/article/getAllArticlesWithAuthornameDTO`);
       if (!response.ok) throw new Error('Fehler beim Laden der Artikel');
       const article_temp = await response.json();
 
@@ -187,7 +189,7 @@ function transformArticles(blogs) {
 async function deleteArticle(id) {
     try {
         console.log("Deleting article with id ", id);
-        const response = await fetch(`${urlBackend}/article/byId/${id}`, { method: 'DELETE' });
+        const response = await fetch(`${urlBackend}/article/deleteArticle/${id}`, { method: 'DELETE' });
 
         if (!response.ok) throw new Error('Fehler beim Löschen des Artikels');
 
@@ -217,10 +219,11 @@ async function moveArticle(articleId, newColumnId) {
     }
 }
 
-async function createArticle(column, title, content, author, tagsName, rate, recommendation) {
+async function createArticle(column, title, content, authorName, tagsName, rate, recommendation) {
 
     const tags = transformTags(tagsName);
     const category = categories.value.find(c => c.id === column).name;
+    const author = authors.value.find(a => a.username === authorName).id;
 
     console.log("Creating article ", JSON.stringify({ category, title, content, author, tags, rate , recommendation}));
 
@@ -245,10 +248,11 @@ function transformTags(tagArray) {
 
 
 
-async function editArticle(column, id, title, content, author, tagsName, rate, recommendation) {
+async function editArticle(column, id, title, content, authorName, tagsName, rate, recommendation) {
 
     const tags = transformTags(tagsName);
     const category = columns.value.find(c => c.id === column).name;
+    const author = authors.value.find(a => a.username === authorName).id;
 
     console.log("Edit article ", JSON.stringify({ category, title, content, author, tags, rate, }));
 
