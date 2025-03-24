@@ -22,6 +22,7 @@
 		const colSize_md = Math.floor(12 / ( (columns.length -1) || 1)); 
 		return `col-12 col-md-${colSize_md} col-lg-${colSize_lg}`;
 	});
+	
 </script>
 
 <template>
