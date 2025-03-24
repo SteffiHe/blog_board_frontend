@@ -28,7 +28,7 @@
     }
 
 </script>
-
+ 
 <template>
     <div :class="['badge me-2', getBadgeColor(tagValue)]">
         {{ tagValue }}

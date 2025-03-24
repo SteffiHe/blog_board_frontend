@@ -31,8 +31,7 @@ const emit = defineEmits(["show-modal"]);
             </span>
 
             <!-- Button to toggle the modal for task creation -->
-             
-           
+
             <button :id="BUTTON_TOGGLE_MODAL_ID" class="d-flex btn btn-outline-primary" @click="$emit('show-modal')">Create new article</button>
         </div>
     </nav>

@@ -33,9 +33,9 @@ const MODAL_RADIOBUTTON_BASE_RECOMMENDATION_ID = 'modalRadiobuttonRecommendation
 const MODAL_BUTTON_CANCEL = 'modalButtonCancel' // for the modal's cancel button
 const MODAL_BUTTON_SUBMIT = 'modalButtonSubmit' // for the modal's submit button
 
-///////////////////////////////////////////////
+//////////////////////////////////////////////
 // implementation
-///////////////////////////////////////////////
+//////////////////////////////////////////////
 
 // declare props
 const props = defineProps({

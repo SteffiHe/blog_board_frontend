@@ -21,6 +21,7 @@
 		const colSize = Math.floor(12 / (columns.length || 1)); // Avoid division by zero
 		return `col-12 col-md-${colSize} col-lg-${colSize}`;
 	});
+	
 </script>
 
 <template>
