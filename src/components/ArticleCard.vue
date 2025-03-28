@@ -4,9 +4,9 @@
 	import Rate from './Rate.vue'
 	import Recommendation from './Recommendation.vue'
 
-	///////////////////////////////////////////////
+	////////////////////////////////////////////////
 	// IDs to be used for the respective DOM elements in the template
-	///////////////////////////////////////////////
+	////////////////////////////////////////////////
 
 	const MODAL_DROPDOWN_TRIGGER_ID = 'dropdownMenuButton'
 	const MODAL_DROPDOWN_ITEM_EDIT = 'dropdownItemEdit'
