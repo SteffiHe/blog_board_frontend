@@ -101,7 +101,6 @@ context ('Create, edit and delete Article', () => {
         cy.get('#modalInputTitle').clear().type(article.title)
         cy.get('#modalButtonSubmit').click()
 
-
         cy.wait(2000)
     })
 

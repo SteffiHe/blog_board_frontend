@@ -6,7 +6,6 @@
         }
     });
 
-
     function getRecommendationCount(recommendation) {
         switch (recommendation) {
             case 'Highly Rec.':
