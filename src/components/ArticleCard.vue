@@ -77,6 +77,7 @@
 		// Check position on mount in case the default position needs adjustment
 		checkSubmenuPosition()
 	})
+	
 </script>
 
 <template>
