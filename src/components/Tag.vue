@@ -4,7 +4,7 @@
             type: String,
             required: true
         }
-    });
+    }); 
 
     function getBadgeColor(tag) {
         switch (tag) {

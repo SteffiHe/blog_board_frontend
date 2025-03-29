@@ -16,7 +16,7 @@
 		'trigger-edit'
 	])
 
-	// Compute dynamic column class
+	// Compute dynamic column class 
 	const columnClass = computed(() => {
 		const colSize_lg = Math.floor(12 / (columns.length || 1)); // Avoid division by zero
 		const colSize_md = Math.floor(12 / ( (columns.length -1) || 1)); 

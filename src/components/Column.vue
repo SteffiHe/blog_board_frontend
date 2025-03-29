@@ -20,7 +20,6 @@
 	])
 
     const column = computed(() => props.columns.find(c => c.id === props.columnId));
-
 </script>
 
 <template>

@@ -29,7 +29,6 @@
                 <i class="bi bi-star-fill" style="color: gold;"></i>
             </span>
         </div> 
-
     </div>
     
 </template>
